@@ -15,10 +15,10 @@ export default function Login() {
   const handleLogin = async () => {
     const data = await loginUser(email, password);
     router.push("/");
-    // if (data.token) {
-    //   localStorage.setItem("token", data.token);
-    //   router.push("/");
-    // }
+    //  if (data.token) {
+    //    localStorage.setItem("token", data.token);
+      
+    //  }
   };
 
   return (
