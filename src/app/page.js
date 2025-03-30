@@ -1,10 +1,12 @@
 "use client";
+import '../styles/globals.css';
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import TaskList from "@/components/TaskList";
 import { fetchTasks, addTask, deleteTask } from "@/services/api";
+
 
 export default function Dashboard() {
   const [tasks, setTasks] = useState([]);
