@@ -1,23 +1,48 @@
 {
   "tasks": [
     {
-      "id": "1",
-      "task": "Buy groceries"
+      "id": "77f0",
+      "task": "Flask Setup"
     },
     {
-      "id": "2",
-      "task": "Complete project"
-    },
-    {
-      "id": "a621",
-      "task": "New Task"
+      "id": "6e3c",
+      "task": "Flask migration"
     }
   ],
   "users": [
     {
       "id": "1",
-      "email": "test@example.com",
-      "password": "password123"
+      "email": "test@dc.com",
+      "password": "nilay123"
+    },
+    {
+      "id": "f2ea",
+      "email": "test1@dc.com",
+      "password": "nilay123"
+    },
+    {
+      "id": "ff21",
+      "task": "New Task"
+    },
+    {
+      "id": "eb8b",
+      "email": "test@dc.com",
+      "password": "nilay123"
+    },
+    {
+      "id": "89d9",
+      "email": "test1@dc.com",
+      "password": "nilay123"
+    },
+    {
+      "id": "0177",
+      "email": "test1@dc.com",
+      "password": "nilay123"
+    },
+    {
+      "id": "5f0c",
+      "email": "test@dc.com",
+      "password": "nilay123"
     }
   ]
 }

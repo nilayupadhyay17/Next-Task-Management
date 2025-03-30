@@ -1,5 +1,6 @@
+"use client";
 import { useState } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { loginUser } from "@/services/api";
@@ -11,6 +12,7 @@ export default function Login() {
 
   const handleLogin = async () => {
     const data = await loginUser(email, password);
+    router.push("/");
     if (data.token) {
       localStorage.setItem("token", data.token);
       router.push("/");

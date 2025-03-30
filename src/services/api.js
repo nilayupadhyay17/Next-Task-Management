@@ -19,7 +19,7 @@ export const deleteTask = async (id) => {
 };
 
 export const registerUser = async (email, password) => {
-  return fetch(`${BASE_URL}/register`, {
+  return fetch(`${BASE_URL}/users`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
@@ -27,7 +27,7 @@ export const registerUser = async (email, password) => {
 };
 
 export const loginUser = async (email, password) => {
-  const res = await fetch(`${BASE_URL}/login`, {
+  const res = await fetch(`${BASE_URL}/users`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
