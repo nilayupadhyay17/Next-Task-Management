@@ -1,14 +1,5 @@
 {
-  "tasks": [
-    {
-      "id": "77f0",
-      "task": "Flask Setup"
-    },
-    {
-      "id": "6e3c",
-      "task": "Flask migration"
-    }
-  ],
+  "tasks": [],
   "users": [
     {
       "id": "1",
@@ -41,6 +32,21 @@
     },
     {
       "id": "5f0c",
+      "email": "test@dc.com",
+      "password": "nilay123"
+    },
+    {
+      "id": "013f",
+      "email": "test@dc.com",
+      "password": "nilay123"
+    },
+    {
+      "id": "9be8",
+      "email": "test@dc.com",
+      "password": "nilay123"
+    },
+    {
+      "id": "d822",
       "email": "test@dc.com",
       "password": "nilay123"
     }

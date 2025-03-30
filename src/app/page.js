@@ -28,14 +28,16 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="p-6 max-w-md mx-auto">
-      <h1 className="text-xl font-bold mb-4">Task Manager</h1>
-      <div className="flex gap-2 mb-4">
-        <Input value={newTask} onChange={(e) => setNewTask(e.target.value)} placeholder="Enter a task" />
-        <Button onClick={handleAddTask}>Add</Button>
+    <div className="flex flex-col items-center min-h-screen bg-gray-100 p-6">
+      <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-lg">
+        <h1 className="text-2xl font-semibold text-center mb-6">Task Manager</h1>
+        <div className="flex gap-2 mb-4">
+          <Input value={newTask} onChange={(e) => setNewTask(e.target.value)} placeholder="Enter a task" />
+          <Button onClick={handleAddTask}>Add</Button>
+        </div>
+        <TaskList tasks={tasks} onDelete={handleDeleteTask} />
+        <Button onClick={() => router.push('/login')} className="mt-4 w-full bg-red-500 hover:bg-red-700">Logout</Button>
       </div>
-      <TaskList tasks={tasks} onDelete={handleDeleteTask} />
-      <Button onClick={() => router.push("/login")} className="mt-4">Logout</Button>
     </div>
   );
 }
