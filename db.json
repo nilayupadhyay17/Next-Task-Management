@@ -1,0 +1,23 @@
+{
+  "tasks": [
+    {
+      "id": "1",
+      "task": "Buy groceries"
+    },
+    {
+      "id": "2",
+      "task": "Complete project"
+    },
+    {
+      "id": "a621",
+      "task": "New Task"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "email": "test@example.com",
+      "password": "password123"
+    }
+  ]
+}
