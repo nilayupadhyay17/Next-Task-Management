@@ -16,14 +16,8 @@ export default function Login() {
   const handleLogin = async () => {
     const data = await loginUser(email, password);
     console.log(data)
-    //router.push("/");
-    //  if (data.token) {
-    //    localStorage.setItem("token", data.token);
-      
-    //  }
 
      if (data.access_token) {
-      localStorage.setItem("token", data.access_token);
       router.push("/");
     } else {
       console.error("Login failed: Token not received.");
