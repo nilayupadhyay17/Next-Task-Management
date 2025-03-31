@@ -14,7 +14,10 @@ export default function Dashboard() {
   const router = useRouter();
 
   useEffect(() => {
-    fetchTasks().then(setTasks);
+    fetchTasks().then((data) => {
+      console.log("Fetched tasks:", data);
+      setTasks(data);
+    });
   }, []);
 
   const handleAddTask = async () => {
