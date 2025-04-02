@@ -1,5 +1,5 @@
-const BASE_URL_Task = "/api/v1"; 
-const BASE_URL_AUTH = "/api/auth";
+const BASE_URL_Task = "/v1"; 
+const BASE_URL_AUTH = "/auth";
 
 // Utility function to get the token from localStorage
 const getToken = () => {
