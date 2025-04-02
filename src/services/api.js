@@ -1,5 +1,9 @@
-const BASE_URL_Task = "/v1"; 
-const BASE_URL_AUTH = "/auth";
+// const BASE_URL_Task = "/v1"; 
+// const BASE_URL_AUTH = "/auth";
+
+const BASE_URL_Task = process.env.NEXT_PUBLIC_API_URL || "/v1"; 
+const BASE_URL_AUTH = process.env.NEXT_PUBLIC_API_AUTH_URL || "/auth";
+
 
 // Utility function to get the token from localStorage
 const getToken = () => {
@@ -117,6 +121,7 @@ export const registerUser = async (email, password) => {
   if (data.access_token) {  // Fix the typo here
     setToken(data.access_token); // Store token in localStorage
   }
+  console.log(`Sending request to: ${BASE_URL_AUTH}/register`);
 
   return data; // Return the successful response data (e.g., user data or token)
 };
