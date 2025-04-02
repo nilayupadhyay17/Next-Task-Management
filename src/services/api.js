@@ -1,5 +1,5 @@
-const BASE_URL_Task = process.env.NEXT_PUBLIC_API_URL_TASK || "http://internal-taskmanager-internal-lb-1644733959.us-east-1.elb.amazonaws.com"; 
-const BASE_URL_AUTH = process.env.NEXT_PUBLIC_API_URL_AUTH || "http://internal-taskmanager-internal-lb-1644733959.us-east-1.elb.amazonaws.com";
+const BASE_URL_Task = "/api/v1"; 
+const BASE_URL_AUTH = "/api/auth";
 
 // Utility function to get the token from localStorage
 const getToken = () => {
@@ -91,7 +91,7 @@ export const deleteTask = async (id) => {
 };
 
 export const registerUser = async (email, password) => {
-  const res = await fetch(`${BASE_URL_AUTH}/auth/register`, {
+  const res = await fetch(`${BASE_URL_AUTH}/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -123,7 +123,7 @@ export const registerUser = async (email, password) => {
 
 export const loginUser = async (email, password) => {
   try {
-    const res = await fetch(`${BASE_URL_AUTH}/auth/login`, {
+    const res = await fetch(`${BASE_URL_AUTH}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
