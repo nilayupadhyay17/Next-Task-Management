@@ -1,5 +1,5 @@
-const BASE_URL_Task = process.env.NEXT_PUBLIC_API_URL_TASK || "http://taskmanager-lb-38865464.us-east-1.elb.amazonaws.com"; 
-const BASE_URL_AUTH = process.env.NEXT_PUBLIC_API_URL_AUTH || "http://taskmanager-lb-38865464.us-east-1.elb.amazonaws.com";
+const BASE_URL_Task = process.env.NEXT_PUBLIC_API_URL_TASK || "http://internal-taskmanager-internal-lb-1644733959.us-east-1.elb.amazonaws.com"; 
+const BASE_URL_AUTH = process.env.NEXT_PUBLIC_API_URL_AUTH || "http://internal-taskmanager-internal-lb-1644733959.us-east-1.elb.amazonaws.com";
 
 // Utility function to get the token from localStorage
 const getToken = () => {
