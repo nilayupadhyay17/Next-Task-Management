@@ -1,5 +1,5 @@
 # Stage 1: Build Stage
-FROM node:18.17.0 as builder
+FROM node:16 as builder
 
 WORKDIR /app
 
@@ -18,7 +18,7 @@ RUN npm install -g pm2
 FROM nginx:alpine
 
 # Install dependencies for Nginx and PM2
-RUN apk update && nodejs npm
+RUN apk update && apk add nodejs npm
 
 # Copy built assets and other necessary files from the builder stage
 COPY --from=builder /app/.next .next
