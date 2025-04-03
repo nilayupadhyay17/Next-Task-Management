@@ -49,4 +49,4 @@ ENV NODE_ENV=production
 EXPOSE 3000
 
 # Start Nginx and Next.js app
-CMD ["sh", "-c", "nginx && amazon-ssm-agent && npm run start"]
+CMD ["sh", "-c", "nginx && amazon-ssm-agent && npm run start"] 
