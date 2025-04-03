@@ -1,7 +1,28 @@
+# Use official Node.js LTS image as base
+FROM node:18-alpine AS builder
+
+# Set working directory inside the container
+WORKDIR /app
+
+# Copy package.json and package-lock.json
+COPY package.json package-lock.json ./
+
+# Install dependencies (including Tailwind CSS)
+RUN npm install
+
+# Copy the entire Next.js project (excluding files in .dockerignore)
+COPY . .
+
+# Ensure Tailwind CSS is properly processed before build
+RUN npx tailwindcss -i ./src/styles/globals.css -o ./public/output.css
+
+# Build the Next.js app
+RUN npm run build
+
 # Use a lightweight Node.js image for runtime
 FROM node:18-alpine AS runner
 
-# Install required dependencies
+# Install Nginx
 RUN apk add --no-cache nginx amazon-ssm-agent
 
 # Set working directory for runtime
@@ -27,5 +48,5 @@ ENV NODE_ENV=production
 # Expose port 3000
 EXPOSE 3000
 
-# Start Nginx, AWS SSM Agent, and Next.js app
+# Start Nginx and Next.js app
 CMD ["sh", "-c", "nginx && amazon-ssm-agent && npm run start"]
