@@ -18,7 +18,7 @@ RUN npm install -g pm2
 FROM nginx:alpine
 
 # Install dependencies for Nginx and PM2
-RUN apk update && apk add supervisor nodejs npm
+RUN apk update && nodejs npm
 
 # Copy built assets and other necessary files from the builder stage
 COPY --from=builder /app/.next .next
