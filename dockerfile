@@ -1,38 +1,55 @@
-# Stage 1: Build Stage
-FROM node:18.17 as builder
+# Use official Node.js LTS image as base for building
+FROM node:18-alpine AS builder
 
+# Set working directory inside the container
 WORKDIR /app
 
-COPY package.json package-lock.json ./
+# Copy package.json and package-lock.json
+COPY package.json package-lock.json ./ 
+
+# Install dependencies
 RUN npm install
 
+# Copy the entire Next.js project
 COPY . .
 
-# Run Next.js build
+# Ensure Tailwind CSS is properly processed before build
+RUN npx tailwindcss -i ./src/styles/globals.css -o ./public/output.css
+
+# Build the Next.js app
 RUN npm run build
 
-# Install PM2 globally
-RUN npm install -g pm2
+# Use a lightweight Node.js image for runtime
+FROM node:18-alpine AS runner
 
-# Stage 2: Production Stage
-FROM nginx:alpine
+# Install Nginx and Supervisor
+RUN apk add --no-cache nginx supervisor
 
-# Install dependencies for Nginx and PM2
-RUN apk update && apk add nodejs npm
+# Set working directory for runtime
+WORKDIR /app
 
-# Copy built assets and other necessary files from the builder stage
+# Copy the custom nginx.conf to the correct location
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# Change permissions of nginx.conf
+RUN chmod 644 /etc/nginx/nginx.conf
+
+# Copy necessary files from builder stage
 COPY --from=builder /app/.next .next
 COPY --from=builder /app/node_modules node_modules
 COPY --from=builder /app/src src
 COPY --from=builder /app/package.json package.json
 COPY --from=builder /app/next.config.mjs next.config.mjs
-COPY --from=builder /app/ecosystem.config.js ecosystem.config.js
 
-# Copy Nginx config
-COPY nginx.conf /etc/nginx/nginx.conf
+# Set environment variable for production
+ENV NODE_ENV=production
 
-# Expose ports
-EXPOSE 3000 80
+# Expose ports (80 for Nginx, 3000 for Next.js)
+EXPOSE 80
+EXPOSE 3000
 
-# Start Nginx and Next.js app using PM2
-CMD ["pm2-runtime", "start", "ecosystem.config.js"]
+# Create a supervisor configuration file to run both Nginx and Next.js app
+COPY supervisord.conf /etc/supervisord.conf
+
+# Start supervisor to handle both Nginx and the Next.js app
+CMD ["supervisord", "-c", "/etc/supervisord.conf"]
